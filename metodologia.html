@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>Metodología | EPIDENGIS CALI</title>
+  <link href="css/styles.css" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+      color: #003366;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    header {
+      background-color: #005eb8;
+      color: white;
+      padding: 1em;
+    }
+
+    .logo {
+      width: 80px;
+    }
+
+    nav button {
+      margin: 0 10px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    nav button:hover {
+      background-color: #0056b3;
+    }
+
+    main {
+      max-width: 960px;
+      margin: auto;
+      padding: 40px 5% 20px 5%;
+      background-color: #ffffff;
+      text-align: justify;
+    }
+
+    h1 {
+      color: white;
+      text-align: center;
+    }
+
+    h2 {
+      color: #005eb8;
+    }
+
+    h3 {
+      color: #003366;
+    }
+
+    ol {
+      padding-left: 1.2em;
+    }
+
+    ul {
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    code, .url {
+      background-color: #eef1f3;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+
+    .url {
+      display: inline-block;
+      margin-top: 0.5rem;
+      color: #005eb8;
+    }
+
+    a {
+      color: #005eb8;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background-color: #003366;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img alt="Logo EPIDENGIS" class="logo" src="assets/Logo_sig_dengue_EPIDENGIS.png"/>
+    <h1>EPIDENGIS CALI</h1>
+    <nav>
+      <button onclick="location.href='index.html'">Inicio</button>
+      <button onclick="location.href='geovisor.html'">Geovisor</button>
+      <button onclick="location.href='tablero.html'">Tablero de Control</button>
+      <button onclick="location.href='contacto.html'">Contáctanos</button>
+    </nav>
+  </header>
+
+  <main>
+    <h2>📚 Metodología</h2>
+    <p>La construcción del geoportal <strong>EPIDENGIS – Sistema de Información Geográfica para la vigilancia del dengue en Cali</strong> se desarrolló mediante una estrategia basada en herramientas de desarrollo web estático, con el propósito de diseñar una plataforma accesible, visualmente clara y funcional, que sirviera como base para futuras integraciones de datos geoespaciales.</p>
+
+    <p>La metodología implementada se estructuró en las siguientes etapas:</p>
+
+    <ol>
+      <li>
+        <h3>Diseño estructural y planificación del sitio</h3>
+        <p>En una primera fase, se definió la arquitectura del sitio, determinando que la estructura principal del geoportal estaría basada en una única página inicial (<code>index.html</code>) con navegación por secciones. Esta estructura permitiría orientar al usuario desde el inicio e incorporar paulatinamente contenidos y herramientas interactivas.</p>
+      </li>
+      <li>
+        <h3>Definición de secciones y navegación</h3>
+        <p>Se organizaron los contenidos en seis botones principales que funcionan como anclas o enlaces hacia diferentes componentes del sitio. Las secciones incluidas fueron:</p>
+        <ul>
+          <li><strong>Home:</strong> página de bienvenida con introducción general del proyecto.</li>
+          <li><strong>Formulario BDG:</strong> enlace a formulario para la recopilación de datos geográficos.</li>
+          <li><strong>Geovisor:</strong> mapas interactivos.</li>
+          <li><strong>Tablero de control:</strong> visualización de estadísticas.</li>
+          <li><strong>Contacto:</strong> medios de comunicación con el equipo.</li>
+          <li><strong>Metodología:</strong> explicación del proceso de construcción.</li>
+        </ul>
+      </li>
+      <li>
+        <h3>Desarrollo visual del sitio web</h3>
+        <p>La interfaz fue desarrollada mediante HTML y CSS personalizados. Se diseñó un menú responsivo y se incorporaron gráficos, el logo del proyecto y una paleta de colores institucional. Los botones se estilizaron para una experiencia clara e intuitiva.</p>
+      </li>
+      <li>
+        <h3>Organización del proyecto</h3>
+        <p>Los archivos fueron organizados en carpetas:</p>
+        <ul>
+          <li><code>/images/</code>: logos y banners.</li>
+          <li><code>/css/</code>: archivos de estilos.</li>
+        </ul>
+        <p>El código se mantuvo modular, semántico y ordenado para facilitar mantenimiento.</p>
+      </li>
+      <li>
+        <h3>Publicación mediante GitHub Pages</h3>
+        <p>El proyecto fue cargado a <code>EPIDENGIS_CALI</code> en GitHub y publicado mediante GitHub Pages desde la rama <strong>main</strong>. Enlace público:</p>
+        <div class="url">https://usuario.github.io/EPIDENGIS_CALI/</div>
+      </li>
+      <li>
+        <h3>Validación y prueba</h3>
+        <p>Se probaron todos los botones, estilos y compatibilidad en navegadores y dispositivos.</p>
+      </li>
+    </ol>
+
+    <section>
+      <h2>💻 Metodología técnica implementada en AWS</h2>
+      <p><strong>Nombre del proyecto:</strong> EPIDENGIS<br/>
+      <strong>Nombre de la base de datos:</strong> ProyectoSIG3<br/>
+      <strong>Nombre de la instancia EC2:</strong> ProyectoSig3</p>
+
+      <p>La infraestructura fue implementada en AWS con PostgreSQL/PostGIS y una máquina virtual Windows Server. A continuación, las etapas:</p>
+
+      <ol>
+        <li><h3>Acceso a AWS Academy</h3><p>Ingreso vía Canvas y aceptación de condiciones en el laboratorio de aprendizaje.</p></li>
+        <li><h3>Creación del servidor PostgreSQL</h3><p>Configuración en AWS RDS, acceso público, puerto 5432 habilitado.</p></li>
+        <li><h3>Configuración del acceso</h3><p>Endpoint de conexión, grupo de seguridad con permisos IPv4.</p></li>
+        <li><h3>Conexión remota con PgAdmin</h3><p>Registro del servidor en PgAdmin con credenciales.</p></li>
+        <li><h3>Instancia EC2 con Windows Server</h3><p>Creación y configuración de instancia <code>t3.large</code> con IP elástica.</p></li>
+        <li><h3>Acceso por escritorio remoto</h3><p>Conexión usando IP, nombre de usuario y clave.</p></li>
+        <li><h3>Instalación del entorno SIG</h3><p>Se instalaron QGIS, GeoServer, pgAdmin, Java, VSC, Notepad++, GitHub Desktop, entre otros.</p></li>
+      </ol>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 EPIDENGIS CALI - Universidad del Valle. Proyecto académico sin fines comerciales.</p>
+  </footer>
+</body>
+</html>

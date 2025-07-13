@@ -1,156 +1,174 @@
-
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
-<meta charset="utf-8"/>
-<title>EPIDENGIS CALI - Geoportal del Dengue</title>
-<link href="css/styles.css" rel="stylesheet"/>
-<style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #ffffff;
-            color: #003366;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
-        header {
-            background-color: #005eb8;
-            color: white;
-            padding: 1em;
-        }
-        .logo {
-            width: 80px;
-        }
-        nav button {
-            margin: 0 10px;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        main {
-            padding: 40px 5% 20px 5%;
-            text-align: justify;
-        }
-        section {
-            margin-bottom: 40px;
-        }
-        h2 {
-            color: #005eb8;
-            text-align: center;
-        }
-        ul {
-            list-style-type: disc;
-            padding-left: 2em;
-        }
-        footer {
-            background-color: #003366;
-            color: white;
-            padding: 10px;
-            text-align: center;
-        }
-        img {
-            max-width: 90%;
-            height: auto;
-            margin: 20px auto;
-            display: block;
-        }
-    </style>
+  <meta charset="utf-8"/>
+  <title>EPIDENGIS CALI - Geoportal del Dengue</title>
+  <link href="css/styles.css" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+      color: #003366;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    header {
+      background-color: #005eb8;
+      color: white;
+      padding: 1em;
+    }
+    .logo {
+      width: 80px;
+    }
+    nav button {
+      margin: 0 10px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    nav button:hover {
+      background-color: #0056b3;
+    }
+    main {
+      padding: 40px 5% 20px 5%;
+      text-align: justify;
+    }
+    section {
+      margin-bottom: 40px;
+    }
+    h2 {
+      color: #005eb8;
+      text-align: center;
+    }
+    ul {
+      list-style-type: disc;
+      padding-left: 2em;
+    }
+    footer {
+      background-color: #003366;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+    img {
+      max-width: 90%;
+      height: auto;
+      margin: 20px auto;
+      display: block;
+    }
+  </style>
 </head>
 <body>
-<header>
-<img alt="Logo EPIDENGIS" class="logo" src="assets/Logo_sig_dengue_EPIDENGIS.png"/>
-<h1>EPIDENGIS CALI</h1>
-<nav>
-<button onclick="location.href='geovisor.html'">Geovisor</button>
-<button onclick="location.href='tablero.html'">Tablero de Control</button>
-</nav>
-</header>
-<main>
-<section>
-<h2>🪟 ¿Qué es el dengue?</h2>
-<p>El dengue es una enfermedad viral aguda causada por el virus del dengue (DENV), que pertenece al género Flavivirus y presenta cuatro serotipos distintos: DENV-1, DENV-2, DENV-3 y DENV-4. Es transmitido principalmente por el mosquito Aedes aegypti, un vector de hábitos diurnos, domiciliarios y altamente antropofílico.</p>
-<p>Clínicamente, se presenta desde fiebre clásica hasta formas graves como el dengue hemorrágico, caracterizado por extravasación plasmática, sangrados severos y disfunción orgánica. Se transmite cuando un mosquito hembra pica a una persona infectada y posteriormente a otras.</p>
-<p>Es un problema creciente de salud pública en zonas tropicales y subtropicales, especialmente en América Latina, sudeste asiático y África.</p>
-<img alt="Infografía del dengue en Cali" src="assets/infografia_dengue_Cali.png"/></section>
-<section>
-<h2>🌆 Contexto histórico y evolución del dengue en Cali</h2>
-<p>El dengue, enfermedad viral transmitida principalmente por el mosquito Aedes aegypti, ha tenido una presencia intermitente pero significativa en la historia de salud pública de Santiago de Cali. Desde finales del siglo XX, la ciudad ha experimentado un crecimiento urbano acelerado y desorganizado, caracterizado por deficiencias en servicios públicos como el acueducto, el alcantarillado y la recolección de basuras, condiciones que favorecen la proliferación de criaderos del vector. Las primeras alertas sanitarias importantes por brotes epidémicos se registraron en la década de los años noventa, coincidiendo con una intensificación de los procesos migratorios internos y un aumento en la vulnerabilidad de ciertos sectores urbanos.</p>
-<p>Durante las dos primeras décadas del siglo XXI, Cali ha atravesado múltiples ciclos epidémicos con incrementos significativos de casos en años como 2010, 2013 y 2016, siendo este último uno de los más críticos. Factores como el cambio climático, las lluvias intensas y la persistencia de criaderos domésticos han consolidado al dengue como un problema de salud pública de carácter endémico en la ciudad. Además, la presencia simultánea de otros arbovirus como chikungunya y zika ha dificultado el diagnóstico oportuno y el control vectorial.</p>
-<p>Frente a este panorama, las autoridades locales y nacionales han implementado estrategias de vigilancia epidemiológica apoyadas en tecnologías de georreferenciación, campañas educativas y acciones comunitarias. No obstante, la persistencia del dengue en Cali evidencia la necesidad de abordar el fenómeno desde un enfoque integral que articule factores sociales, ambientales y territoriales. Actualmente, el uso de Sistemas de Información Geográfica (SIG) ha permitido visualizar con mayor precisión la distribución espacial de los casos, identificar zonas críticas y orientar las intervenciones con base en evidencia científica.</p>
-</section>
-<section>
-<h2>🌡️ Factores que favorecen su propagación</h2>
-<ul>
-<li><b>Climáticos:</b> Temperaturas elevadas, alta humedad, lluvias intensas.</li>
-<li><b>Ambientales/infraestructura:</b> Agua estancada, residuos sólidos, criaderos.</li>
-<li><b>Socioeconómicos:</b> Pobreza, servicios públicos deficientes, alta densidad.</li>
-<li><b>Urbanización/movilidad:</b> Urbanización no planificada, movilidad alta.</li>
-</ul>
-</section>
-<section>
-<h2>🐛 Ciclo de vida del mosquito Aedes aegypti</h2>
-<ul>
-<li><b>Huevo:</b> En paredes de recipientes con agua limpia.</li>
-<li><b>Larva:</b> Se desarrolla en agua, 4 estadios larvales.</li>
-<li><b>Pupa:</b> Fase flotante, no se alimenta.</li>
-<li><b>Adulto:</b> Hembra pica para alimentar huevos. Mayor actividad en la mañana y tarde.</li>
-</ul>
-<p>Ruiz-Polo et al. (2024) destacan su adaptabilidad en contextos rurales y clímaticamente extremos.</p>
-</section>
-<section>
-<h2>🗌 Zonas críticas y distribución espacial en Cali</h2>
-<ul>
-<li>Comuna 3, 6, 7, 13 y 15 concentran la mayor cantidad de casos.</li>
-<li>Altos niveles de criaderos positivos, viviendas precarias y densidad.</li>
-<li>Cercanía a canales, lotes baldíos, servicios públicos deficientes.</li>
-</ul>
-<p>Cuartas et al. (2017) muestran correlación entre criaderos positivos y potenciales tanto intra como extradomiciliarios.</p>
-<img alt="Mapa de calor de Cali" src="assets/mapa_calor_dengue.png"/></section>
-<section>
-<h2>🏥 Impacto en la salud pública</h2>
-<ul>
-<li>Alta morbilidad en niños y jóvenes.</li>
-<li>Aumento en demanda hospitalaria e ingreso a UCI.</li>
-<li>Presión financiera al sistema de salud.</li>
-<li>Riesgo de mortalidad en casos graves o coinfecciones.</li>
-</ul>
-<p>La co-circulación serotípica y falta de vacuna universal aumentan la vulnerabilidad.</p>
-</section>
-<section>
-<h2>🧪 Respuestas institucionales y tecnologías aplicadas</h2>
-<p><b>Respuestas institucionales:</b></p>
-<ul>
-<li>INS: Protocolos de vigilancia activa, pasiva y comunitaria.</li>
-<li>Campañas de eliminación de criaderos y uso de larvicidas.</li>
-<li>Articulación intersectorial local.</li>
-</ul>
-<p><b>Tecnologías aplicadas:</b></p>
-<ul>
-<li>SIG y teledetección para mapear casos y riesgos.</li>
-<li>Sistemas de Alerta Temprana (SAT) en desarrollo.</li>
-<li>PostgreSQL/PostGIS para bases de datos espaciales.</li>
-<li>Modelos espacio-temporales (Kulldorff) para detectar brotes.</li>
-</ul>
-</section>
-<section>
-<h2>📆 Autores y referencias clave</h2>
-<ul>
-<li>Abonia, D. P., et al. (2019). Análisis espacial del dengue en comuna 6 de Cali.</li>
-<li>Cuartas, D. E., et al. (2017). Distribución de criaderos positivos y potenciales.</li>
-<li>Fuertes-Bucheli, J., et al. (2016). Dengue, Zika y chikunguña en Cali.</li>
-<li>INS (2022, 2024). Protocolos y lineamientos nacionales.</li>
-<li>Rocha-Barraza &amp; Ospina-Martínez (2023). Epidemiología del dengue en el Valle.</li>
-<li>De Smith, Goodchild &amp; Longley (2023). Geospatial Analysis.</li>
-<li>Mala &amp; Jat (2019). Análisis espacio-temporal con SIG.</li>
-</ul>
-</section>
-<img alt="Mapa mundial del dengue" src="assets/Mapa_mundial_dengue.png"/></main>
-<footer>
-<p>© 2025 EPIDENGIS CALI - Universidad del Valle. Proyecto académico sin fines comerciales.</p>
-</footer>
+  <header>
+    <img alt="Logo EPIDENGIS" class="logo" src="assets/Logo_sig_dengue_EPIDENGIS.png"/>
+    <h1>EPIDENGIS CALI</h1>
+    <nav>
+      <button onclick="location.href='index.html'">Home</button>
+      <button onclick="location.href='geovisor.html'">Geovisor</button>
+      <button onclick="location.href='tablero.html'">Tablero de Control</button>
+      <button onclick="location.href='metodologia.html'">Metodología</button>
+      <button onclick="location.href='contacto.html'">Contáctanos</button>
+      <button onclick="location.href='quienes_somos.html'">¿Quiénes somos?</button>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>🪟 ¿Qué es el dengue?</h2>
+      <p>El dengue es una enfermedad viral aguda causada por el virus del dengue (DENV), que pertenece al género Flavivirus y presenta cuatro serotipos distintos: DENV-1, DENV-2, DENV-3 y DENV-4. Es transmitido principalmente por el mosquito Aedes aegypti, un vector de hábitos diurnos, domiciliarios y altamente antropofílico.</p>
+      <p>Clínicamente, se presenta desde fiebre clásica hasta formas graves como el dengue hemorrágico, caracterizado por extravasación plasmática, sangrados severos y disfunción orgánica. Se transmite cuando un mosquito hembra pica a una persona infectada y posteriormente a otras.</p>
+      <p>Es un problema creciente de salud pública en zonas tropicales y subtropicales, especialmente en América Latina, sudeste asiático y África.</p>
+      <img alt="Infografía del dengue en Cali" src="assets/infografia_dengue_Cali.png"/>
+    </section>
+
+    <section>
+      <h2>🌆 Contexto histórico y evolución del dengue en Cali</h2>
+      <p>El dengue, enfermedad viral transmitida principalmente por el mosquito Aedes aegypti, ha tenido una presencia intermitente pero significativa en la historia de salud pública de Santiago de Cali. Desde finales del siglo XX, la ciudad ha experimentado un crecimiento urbano acelerado y desorganizado, caracterizado por deficiencias en servicios públicos como el acueducto, el alcantarillado y la recolección de basuras, condiciones que favorecen la proliferación de criaderos del vector.</p>
+      <p>Durante las dos primeras décadas del siglo XXI, Cali ha atravesado múltiples ciclos epidémicos con incrementos significativos de casos en años como 2010, 2013 y 2016, siendo este último uno de los más críticos. Factores como el cambio climático, las lluvias intensas y la persistencia de criaderos domésticos han consolidado al dengue como un problema de salud pública de carácter endémico en la ciudad. Además, la presencia simultánea de otros arbovirus como chikungunya y zika ha dificultado el diagnóstico oportuno y el control vectorial.</p>
+      <p>Frente a este panorama, las autoridades locales y nacionales han implementado estrategias de vigilancia epidemiológica apoyadas en tecnologías de georreferenciación, campañas educativas y acciones comunitarias. No obstante, la persistencia del dengue en Cali evidencia la necesidad de abordar el fenómeno desde un enfoque integral que articule factores sociales, ambientales y territoriales. Actualmente, el uso de Sistemas de Información Geográfica (SIG) ha permitido visualizar con mayor precisión la distribución espacial de los casos, identificar zonas críticas y orientar las intervenciones con base en evidencia científica.</p>
+    </section>
+
+    <section>
+      <h2>🌡️ Factores que favorecen su propagación</h2>
+      <ul>
+        <li><b>Climáticos:</b> Temperaturas elevadas, alta humedad, lluvias intensas.</li>
+        <li><b>Ambientales/infraestructura:</b> Agua estancada, residuos sólidos, criaderos.</li>
+        <li><b>Socioeconómicos:</b> Pobreza, servicios públicos deficientes, alta densidad.</li>
+        <li><b>Urbanización/movilidad:</b> Urbanización no planificada, movilidad alta.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>🐛 Ciclo de vida del mosquito Aedes aegypti</h2>
+      <ul>
+        <li><b>Huevo:</b> En paredes de recipientes con agua limpia.</li>
+        <li><b>Larva:</b> Se desarrolla en agua, 4 estadios larvales.</li>
+        <li><b>Pupa:</b> Fase flotante, no se alimenta.</li>
+        <li><b>Adulto:</b> Hembra pica para alimentar huevos. Mayor actividad en la mañana y tarde.</li>
+      </ul>
+      <p>Ruiz-Polo et al. (2024) destacan su adaptabilidad en contextos rurales y clímaticamente extremos.</p>
+    </section>
+
+    <section>
+      <h2>🗌 Zonas críticas y distribución espacial en Cali</h2>
+      <ul>
+        <li>Comuna 3, 6, 7, 13 y 15 concentran la mayor cantidad de casos.</li>
+        <li>Altos niveles de criaderos positivos, viviendas precarias y densidad.</li>
+        <li>Cercanía a canales, lotes baldíos, servicios públicos deficientes.</li>
+      </ul>
+      <p>Cuartas et al. (2017) muestran correlación entre criaderos positivos y potenciales tanto intra como extradomiciliarios.</p>
+      <img alt="Mapa de calor de Cali" src="assets/mapa_calor_dengue.png"/>
+    </section>
+
+    <section>
+      <h2>🏥 Impacto en la salud pública</h2>
+      <ul>
+        <li>Alta morbilidad en niños y jóvenes.</li>
+        <li>Aumento en demanda hospitalaria e ingreso a UCI.</li>
+        <li>Presión financiera al sistema de salud.</li>
+        <li>Riesgo de mortalidad en casos graves o coinfecciones.</li>
+      </ul>
+      <p>La co-circulación serotípica y falta de vacuna universal aumentan la vulnerabilidad.</p>
+    </section>
+
+    <section>
+      <h2>🧪 Respuestas institucionales y tecnologías aplicadas</h2>
+      <p><b>Respuestas institucionales:</b></p>
+      <ul>
+        <li>INS: Protocolos de vigilancia activa, pasiva y comunitaria.</li>
+        <li>Campañas de eliminación de criaderos y uso de larvicidas.</li>
+        <li>Articulación intersectorial local.</li>
+      </ul>
+      <p><b>Tecnologías aplicadas:</b></p>
+      <ul>
+        <li>SIG y teledetección para mapear casos y riesgos.</li>
+        <li>Sistemas de Alerta Temprana (SAT) en desarrollo.</li>
+        <li>PostgreSQL/PostGIS para bases de datos espaciales.</li>
+        <li>Modelos espacio-temporales (Kulldorff) para detectar brotes.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>📆 Autores y referencias clave</h2>
+      <ul>
+        <li>Abonia, D. P., et al. (2019). Análisis espacial del dengue en comuna 6 de Cali.</li>
+        <li>Cuartas, D. E., et al. (2017). Distribución de criaderos positivos y potenciales.</li>
+        <li>Fuertes-Bucheli, J., et al. (2016). Dengue, Zika y chikunguña en Cali.</li>
+        <li>INS (2022, 2024). Protocolos y lineamientos nacionales.</li>
+        <li>Rocha-Barraza & Ospina-Martínez (2023). Epidemiología del dengue en el Valle.</li>
+        <li>De Smith, Goodchild & Longley (2023). Geospatial Analysis.</li>
+        <li>Mala & Jat (2019). Análisis espacio-temporal con SIG.</li>
+      </ul>
+    </section>
+
+    <img alt="Mapa mundial del dengue" src="assets/Mapa_mundial_dengue.png"/>
+  </main>
+
+  <footer>
+    <p>© 2025 EPIDENGIS CALI - Universidad del Valle. Proyecto académico sin fines comerciales.</p>
+  </footer>
 </body>
 </html>

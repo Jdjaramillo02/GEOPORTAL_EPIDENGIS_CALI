@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>EPIDENGIS CALI - Contáctanos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="css/styles.css" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+      color: #003366;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    header {
+      background-color: #005eb8;
+      color: white;
+      padding: 1em;
+    }
+    .logo {
+      width: 80px;
+    }
+    nav button {
+      margin: 0 10px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    nav button:hover {
+      background-color: #0056b3;
+    }
+    main {
+      padding: 40px 5% 20px 5%;
+      text-align: justify;
+    }
+    h2 {
+      color: #005eb8;
+      text-align: center;
+    }
+    input, textarea {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button[type="submit"] {
+      padding: 12px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+    footer {
+      background-color: #003366;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      color: white;
+      border-radius: 50%;
+      padding: 15px;
+      font-size: 24px;
+      z-index: 100;
+      text-decoration: none;
+    }
+    .whatsapp-float:hover {
+      background-color: #1ebe5d;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <img alt="Logo EPIDENGIS" class="logo" src="assets/Logo_sig_dengue_EPIDENGIS.png"/>
+    <h1>EPIDENGIS CALI</h1>
+    <nav>
+      <button onclick="location.href='index.html'">Inicio</button>
+      <button onclick="location.href='geovisor.html'">Geovisor</button>
+      <button onclick="location.href='tablero.html'">Tablero de Control</button>
+    </nav>
+  </header>
+
+  <main>
+    <section style="background-color:#ffffff; color:#003366; padding: 40px 5%; text-align: justify;">
+      <h2>📬 Contáctanos</h2>
+      <p style="text-align:center;">¿Tienes alguna duda o necesitas más información? Escríbenos y te responderemos pronto.</p>
+
+      <form style="max-width:600px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px;">
+        <input type="text" name="nombre" placeholder="Tu nombre" required>
+        <input type="email" name="email" placeholder="Tu correo electrónico" required>
+        <input type="text" name="asunto" placeholder="Asunto" required>
+        <textarea name="mensaje" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+
+      <div style="margin-top:30px; text-align:center;">
+        <p>📧 <strong>Email:</strong> EPIDENGIS_CALI@gmail.com</p>
+        <p>📞 <strong>Teléfono:</strong> +57 300 123 4567</p>
+        <p>📍 <strong>Dirección:</strong> Universidad del Valle, Sede Meléndez, Cali, Colombia</p>
+        <p>🕒 <strong>Horario:</strong> Lunes a viernes, 8:00 a.m. – 6:00 p.m.</p>
+      </div>
+
+      <div style="margin-top:30px;">
+        <p style="text-align:center;">🗺️ <strong>Encuéntranos aquí:</strong><br/>Cl. 13 #100-00, Comuna 17, Cali, Valle del Cauca</p>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3977.075021522528!2d-76.53033372505468!3d3.3752604516215194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e30a7502dcb3693%3A0x196ac2a7fc51b09d!2sUniversidad%20del%20Valle%20-%20Sede%20Mel%C3%A9ndez!5e0!3m2!1ses-419!2sco!4v1720889482173!5m2!1ses-419!2sco"
+          width="100%" height="300" style="border:0; border-radius:8px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 EPIDENGIS CALI - Universidad del Valle. Proyecto académico sin fines comerciales.</p>
+  </footer>
+
+  <a href="https://wa.me/573001234567" class="whatsapp-float" target="_blank" title="Chatea por WhatsApp">💬</a>
+</body>
+</html>
