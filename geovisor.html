@@ -3,8 +3,15 @@
 <head>
   <meta charset="utf-8"/>
   <title>Geovisor | EPIDENGIS CALI</title>
-  <link href="css/styles.css" rel="stylesheet"/>
   
+  <!-- Estilos propios -->
+  <link href="css/styles.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.locatecontrol/dist/L.Control.Locate.min.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-minimap/dist/Control.MiniMap.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-measure/3.3.0/leaflet-measure.css"/>
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -34,18 +41,9 @@
       background-color: #0056b3;
     }
     main {
-      padding: 40px 5% 20px 5%;
-      text-align: justify;
-      max-width: 960px;
-      margin: auto;
-    }
-    h2 {
-      color: #005eb8;
-      text-align: center;
-    }
-    ul {
-      list-style-type: disc;
-      padding-left: 2em;
+      padding: 0;
+      margin: 0;
+      text-align: left;
     }
     footer {
       background-color: #003366;
@@ -53,38 +51,193 @@
       padding: 10px;
       text-align: center;
     }
-    img {
-      max-width: 90%;
-      height: auto;
-      margin: 20px auto;
+    #map-title {
+      background-color: #e6f0fa;
+      color: #003366;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+    }
+    #logo-in-title {
+      height: 40px;
+      margin-right: 10px;
+    }
+    #map {
+      height: 600px;
+      width: 100%;
+    }
+    #north-arrow-svg {
+      position: absolute;
+      top: 100px;
+      left: 10px;
+      z-index: 1000;
+    }
+    .leaflet-control-custom {
+      background: white;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    #bottom-buttons {
+      position: absolute;
+      bottom: 60px;
+      left: 10px;
+      z-index: 1000;
+    }
+    #bottom-buttons button {
       display: block;
+      margin-bottom: 5px;
+      background-color: #005eb8;
+      color: white;
+      border: none;
+      padding: 8px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .bottom-panel {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      width: 280px;
+      max-height: 300px;
+      overflow-y: auto;
+      background: white;
+      padding: 10px;
+      border: 1px solid #ccc;
+      z-index: 1000;
+    }
+    .hidden {
+      display: none;
+    }
+    #metadata-btn, #measure-btn, #share-btn {
+      position: absolute;
+      top: 70px;
+      right: 10px;
+      z-index: 1000;
+      margin-bottom: 10px;
+    }
+    #measure-btn, #share-btn {
+      top: 120px;
+    }
+    #share-btn {
+      top: 170px;
     }
   </style>
-
 </head>
+
 <body>
-  
-  <header>
-    <img alt="Logo EPIDENGIS" class="logo" src="assets/Logo_sig_dengue_EPIDENGIS.png"/>
-    <h1>EPIDENGIS CALI</h1>
-    <nav>
-      <button onclick="location.href='index.html'">Home</button>
-      <button onclick="location.href='geovisor.html'">Geovisor</button>
-      <button onclick="location.href='tablero.html'">Tablero de Control</button>
-      <button onclick="location.href='metodologia.html'">Metodología</button>
-      <button onclick="location.href='contacto.html'">Contáctanos</button>
-      <button onclick="location.href='quienes_somos.html'">¿Quiénes somos?</button>
-    </nav>
-  </header>
 
-  <main>
-    <h2>🗺️ Geovisor Interactivo</h2>
-    <p>Este geovisor permite explorar la distribución espacial de los casos de dengue en Cali durante los años 2014, 2015 y 2016. Se integran capas de sumideros, drenajes pluviales y variables climáticas (humedad, temperatura y precipitación) en formato ráster, con el fin de identificar zonas críticas y apoyar decisiones en salud pública.</p>
-  </main>
+<header>
+  <img alt="Logo EPIDENGIS" class="logo" src="assets/Logo_sig_dengue_EPIDENGIS.png"/>
+  <h1>EPIDENGIS CALI</h1>
+  <nav>
+    <button onclick="location.href='index.html'">Home</button>
+    <button onclick="location.href='geovisor.html'">Geovisor</button>
+    <button onclick="location.href='tablero.html'">Tablero de Control</button>
+    <button onclick="location.href='metodologia.html'">Metodología</button>
+    <button onclick="location.href='contacto.html'">Contáctanos</button>
+    <button onclick="location.href='quienes_somos.html'">¿Quiénes somos?</button>
+  </nav>
+</header>
 
-  <footer>
-    <p>© 2025 EPIDENGIS CALI - Universidad del Valle. Proyecto académico sin fines comerciales.</p>
-  </footer>
+<main>
+
+  <div id="map-title">
+    <img src="img/logo.png" alt="Logo institucional" id="logo-in-title">
+    Geovisor EpidenGIS Cali
+  </div>
+  <div id="map"></div>
+
+  <div id="north-arrow-svg">
+    <svg width="40" height="60" viewBox="0 0 100 100">
+      <polygon points="50,10 60,40 50,30" fill="black" stroke="black" stroke-width="2"/>
+      <polygon points="50,10 40,40 50,30" fill="white" stroke="black" stroke-width="2"/>
+      <text x="50" y="85" font-size="26" fill="black" text-anchor="middle" font-family="Arial" font-weight="bold">N</text>
+    </svg>
+  </div>
+
+  <button id="metadata-btn" title="Ver metadatos">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+      <circle cx="12" cy="12" r="10" fill="#378ec9"/>
+      <text x="12" y="16" text-anchor="middle" font-size="14" fill="white" font-family="Arial" font-weight="bold">i</text>
+    </svg>
+  </button>
+
+  <button id="measure-btn" class="leaflet-bar leaflet-control leaflet-control-custom" title="Medir distancia">
+    <img src="https://static.thenounproject.com/png/40165-200.png" alt="Regla" width="24" height="24">
+  </button>
+
+  <button id="share-btn" class="leaflet-bar leaflet-control leaflet-control-custom" title="Compartir mapa">
+    <img src="https://cdn-icons-png.flaticon.com/512/929/929610.png" alt="Compartir" width="24" height="24">
+  </button>
+
+  <div id="bottom-buttons">
+    <button onclick="togglePanel('legend-panel')">🗺️ Leyenda</button>
+    <button onclick="togglePanel('layers-panel')">🧭 Capas</button>
+  </div>
+
+  <div id="legend-panel" class="bottom-panel hidden">
+    <h4>Leyenda</h4>
+    <div id="legend-content-dynamic"></div>
+  </div>
+
+  <div id="layers-panel" class="bottom-panel hidden">
+    <h4>Capas</h4>
+    <label><input type="checkbox" onchange="toggleLayer(capaciudad, this.checked)" checked> Ciudad</label><br>
+    <label><input type="checkbox" onchange="toggleLayer(capaComuna, this.checked)" checked> Comunas</label><br>
+    <label><input type="checkbox" onchange="toggleLayer(capaBarrios, this.checked)"> Barrios</label><br>
+    <label><input type="checkbox" onchange="toggleLayer(capavia, this.checked)"> Vías</label><br>
+    <label><input type="checkbox" onchange="toggleLayer(capacanal, this.checked)"> Canales</label><br>
+    <label><input type="checkbox" onchange="toggleLayer(capacentro_salud, this.checked)"> Centros de Salud</label><br>
+    <label><input type="checkbox" onchange="toggleLayer(capasumidero, this.checked)"> Sumideros</label><br>
+    <label><input type="checkbox" onchange="toggleLayer(capacaso_dengue_2014, this.checked)"> Casos Dengue 2014</label><br>
+    <label><input type="checkbox" onchange="toggleLayer(capacaso_dengue_2015, this.checked)"> Casos Dengue 2015</label><br>
+    <label><input type="checkbox" onchange="toggleLayer(capacaso_dengue_2016, this.checked)"> Casos Dengue 2016</label><br>
+    <label><input type="checkbox" onchange="toggleLayer(capaprecipitacion_2014, this.checked)"> Precipitación 2014</label><br>
+    <label><input type="checkbox" onchange="toggleLayer(capaprecipitacion_2015, this.checked)"> Precipitación 2015</label><br>
+    <label><input type="checkbox" onchange="toggleLayer(capaprecipitacion_2016, this.checked)"> Precipitación 2016</label><br>
+    <label><input type="checkbox" onchange="toggleLayer(capahumedad_2014, this.checked)"> Humedad 2014</label><br>
+    <label><input type="checkbox" onchange="toggleLayer(capahumedad_2015, this.checked)"> Humedad 2015</label><br>
+    <label><input type="checkbox" onchange="toggleLayer(capahumedad_2016, this.checked)"> Humedad 2016</label><br>
+    <label><input type="checkbox" onchange="toggleLayer(capatemperatura_2014, this.checked)"> Temperatura 2014</label><br>
+    <label><input type="checkbox" onchange="toggleLayer(capatemperatura_2015, this.checked)"> Temperatura 2015</label><br>
+    <label><input type="checkbox" onchange="toggleLayer(capatemperatura_2016, this.checked)"> Temperatura 2016</label><br>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2025 EPIDENGIS CALI - Universidad del Valle. Proyecto académico sin fines comerciales.</p>
+</footer>
+
+<!-- Scripts -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+<script src="https://unpkg.com/leaflet.locatecontrol/dist/L.Control.Locate.min.js"></script>
+<script src="https://unpkg.com/leaflet-minimap/dist/Control.MiniMap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-measure/3.3.0/leaflet-measure.min.js"></script>
+<script src="visor.js"></script>
+
+<script>
+  function togglePanel(panelId) {
+    const legendPanel = document.getElementById('legend-panel');
+    const layersPanel = document.getElementById('layers-panel');
+    const targetPanel = document.getElementById(panelId);
+    const isAlreadyVisible = !targetPanel.classList.contains('hidden');
+
+    legendPanel.classList.add('hidden');
+    layersPanel.classList.add('hidden');
+
+    if (!isAlreadyVisible) {
+      targetPanel.classList.remove('hidden');
+    }
+
+    if (panelId === 'legend-panel' && !isAlreadyVisible) {
+      updateLegend();
+    }
+  }
+</script>
 
 </body>
 </html>
