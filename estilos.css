@@ -1,0 +1,230 @@
+/* estilos.css */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    overflow: hidden; /* Asegúrate de que esta línea esté aquí para el scroll global! */
+}
+
+#map {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+/* Título superior (ahora incluye el logo) */
+#map-title {
+    background-color: #cce4f7;
+    color: #003366;
+    font-size: 25px;
+    font-weight: bold;
+    height: 60px; /* Altura de la barra del título */
+    width: 100%;
+    font-family: 'Segoe UI', sans-serif;
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.1);
+    z-index: 1000;
+    
+    position: fixed; /* Fija la barra en la parte superior */
+    top: 0;
+    left: 0;
+
+    display: flex; /* Habilitamos Flexbox para alinear el logo y el texto */
+    align-items: center; /* Centra verticalmente el logo y el texto */
+    justify-content: center; /* Centra horizontalmente todo el contenido */
+    gap: 15px; /* Espacio entre el logo y el texto */
+    padding: 0 15px; /* Pequeño padding a los lados */
+    box-sizing: border-box; /* Asegura que el padding no añada ancho total */
+}
+
+/* Estilos para el logo dentro del título */
+#map-title #logo-in-title {
+    height: 50px; /* Ajusta el tamaño del logo */
+    /* Si quieres un margen adicional a la derecha del logo: */
+    /* margin-right: 10px; */
+}
+
+/* ---------------------------------------------------- */
+/* AJUSTES PARA LOS BOTONES DE LEAFLET EN LA IZQUIERDA */
+/* ---------------------------------------------------- */
+
+/* Posiciona el contenedor general de los controles de Leaflet a la izquierda */
+.leaflet-top.leaflet-left {
+    /* La altura de tu barra de título es 60px.
+       Queremos que los botones empiecen justo debajo de ella, más un pequeño margen.
+       60px (barra) + 10px (margen deseado) = 70px.
+       ¡Esta es la línea clave para mover el grupo de botones! */
+    top: 70px;
+}
+
+/* Personaliza los botones tipo "Home" y otros controles custom */
+.leaflet-control-custom {
+    background-color: white !important;
+    border: 1px solid #999;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+}
+
+/* Espaciado entre botones de control dentro del grupo 'topleft' */
+.leaflet-top.leaflet-left .leaflet-control {
+    margin-bottom: 10px; /* Espacio entre cada botón */
+}
+
+/* Flecha del norte */
+#north-arrow-svg {
+    position: absolute; /* O 'fixed' si quieres que se quede fija con la ventana */
+    top: 300px; /* Consistente con el 'top' de .leaflet-top.leaflet-left */
+    left: 10px;
+    transform: none;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 4px;
+    border-radius: 4px;
+    box-shadow: 0 0 5px #666;
+    z-index: 1000;
+}
+#north-arrow-svg svg {
+    width: 30px;
+    height: 30px;
+}
+
+/* ---------------------------------------------------- */
+/* Control de capas personalizado */
+/* ---------------------------------------------------- */
+.leaflet-control-layers {
+    background-color: white !important;
+    border: none !important;
+    border-radius: 8px !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3) !important;
+    padding: 6px !important;
+    z-index: 1002 !important; /* Asegura que esté por encima de otros elementos */
+}
+
+.leaflet-control-layers-toggle {
+    width: 36px !important;
+    height: 36px !important;
+    background-size: 22px 22px !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-color: white !important;
+    border-radius: 6px !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3) !important;
+    border: none !important;
+    background-image: url('https://cdn-icons-png.flaticon.com/512/159/159078.png');
+}
+
+/* ---------------------------------------------------- */
+/* Botones flotantes (derecha) */
+/* ---------------------------------------------------- */
+#metadata-btn { top: 70px; } /* Ajustados para no chocar con el título */
+#measure-btn { top: 125px; } /* Ajustados para no chocar con el título */
+#share-btn { top: 180px; } /* Ajustados para no chocar con el título */
+
+#metadata-btn,
+#measure-btn,
+#share-btn,
+#legend-btn { /* 'legend-btn' no está en tu HTML, pero lo mantengo por si lo tienes en tu JS */
+    position: fixed; /* Mejor fixed para que se queden visibles al hacer scroll si lo hubiera */
+    right: 10px; /* Ajustado para la imagen que me enviaste */
+    width: 48px;
+    height: 48px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    z-index: 1000;
+    cursor: pointer;
+}
+#metadata-btn:hover {
+    background-color: #378ec9;
+}
+#measure-btn img,
+#share-btn img,
+#legend-btn img {
+    width: 24px;
+    height: 24px;
+}
+
+/* PANEL INFERIOR CLÁSICO (antiguo) */
+#bottom-panel {
+    display: none; /* se reemplazó por los nuevos paneles */
+}
+
+/* NUEVOS PANEL INFERIORES MODERNOS */
+.bottom-panel {
+    position: absolute;
+    bottom: 70px;
+    left: 20px;
+    width: 250px;
+    max-height: 250px;
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 12px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.3);
+    z-index: 999;
+    font-size: 14px;
+    border-radius: 8px;
+}
+
+.bottom-panel h4 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: #003366;
+    text-align: center;
+}
+
+.legend-color {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+    border: 1px solid #000;
+    vertical-align: middle;
+}
+
+/* Botones inferiores */
+#bottom-buttons {
+    position: fixed;
+    bottom: 10px;
+    left: 20px;
+    z-index: 1001;
+    display: flex;
+    gap: 10px;
+}
+
+#bottom-buttons button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    transition: background-color 0.3s;
+}
+
+#bottom-buttons button:hover {
+    background-color: #0056b3;
+}
+
+/* Clase para ocultar paneles */
+.hidden {
+    display: none;
+}
