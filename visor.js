@@ -345,3 +345,59 @@ map.addControl(measureControl);
 document.getElementById("measure-btn").addEventListener("click", () => {
     measureControl._toggleMeasure();
 });
+
+
+// === GetFeatureInfo para capas de dengue ===
+map.on('click', function (e) {
+    const capasDengue = [
+        capacaso_dengue_2014,
+        capacaso_dengue_2015,
+        capacaso_dengue_2016
+    ];
+
+    capasDengue.forEach(capa => {
+        if (!map.hasLayer(capa)) return;
+
+        const point = map.latLngToContainerPoint(e.latlng, map.getZoom());
+        const size = map.getSize();
+
+        const params = {
+            request: 'GetFeatureInfo',
+            service: 'WMS',
+            srs: 'EPSG:4326',
+            styles: '',
+            transparent: true,
+            version: '1.1.1',
+            format: 'image/png',
+            bbox: map.getBounds().toBBoxString(),
+            height: size.y,
+            width: size.x,
+            layers: capa.options.layers,
+            query_layers: capa.options.layers,
+            info_format: 'application/json',
+            x: point.x,
+            y: point.y
+        };
+
+        const url = capa._url + L.Util.getParamString(params, capa._url, true);
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                if (data.features.length > 0) {
+                    const props = data.features[0].properties;
+                    let content = "<b>Datos del caso de dengue:</b><br>";
+                    for (const key in props) {
+                        content += `<b>${key}</b>: ${props[key]}<br>`;
+                    }
+                    L.popup()
+                        .setLatLng(e.latlng)
+                        .setContent(content)
+                        .openOn(map);
+                }
+            })
+            .catch(err => {
+                console.error("Error en GetFeatureInfo:", err);
+            });
+    });
+});
